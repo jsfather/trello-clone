@@ -1,0 +1,126 @@
+@use 'sass:color';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.menuContainer {
+  position: relative;
+}
+
+.menuButton {
+  @include button-ghost;
+  padding: $spacing-xs;
+  color: $color-text-secondary;
+  border-radius: $radius-sm;
+  transition: color $transition-fast, background-color $transition-fast;
+  
+  &:hover {
+    color: $color-text-primary;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  
+  svg {
+    display: block;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 220px;
+  background: white;
+  border-radius: $radius-md;
+  box-shadow: $shadow-lg;
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideDown 0.15s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menuItem {
+  @include button-ghost;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  text-align: left;
+  gap: $spacing-sm;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  transition: background-color $transition-fast, color $transition-fast;
+  
+  &:hover:not(:disabled) {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  &.danger {
+    color: $color-danger;
+    
+    &:hover:not(:disabled) {
+      background-color: rgba($color-danger, 0.1);
+    }
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.separator {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.08);
+  margin: $spacing-xs 0;
+}
+
+.confirmBox {
+  padding: $spacing-md;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.confirmText {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  margin-bottom: $spacing-sm;
+  line-height: 1.4;
+}
+
+.confirmActions {
+  display: flex;
+  gap: $spacing-xs;
+  justify-content: flex-end;
+}
+
+.confirmButton {
+  @include button-ghost;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border-radius: $radius-sm;
+  transition: background-color $transition-fast, color $transition-fast;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  
+  &.danger {
+    color: white;
+    background-color: $color-danger;
+    
+    &:hover {
+      background-color: color.adjust($color-danger, $lightness: -8%);
+    }
+  }
+}

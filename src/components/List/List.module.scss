@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.list {
+  @include list-container;
+  flex-shrink: 0;
+  
+  &.dragging {
+    opacity: 0.5;
+    box-shadow: $shadow-lg;
+  }
+}
+
+.header {
+  @include flex-between;
+  padding: $spacing-sm;
+  padding-bottom: $spacing-xs;
+  cursor: grab;
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  flex: 1;
+  min-width: 0;
+}
+
+.cards {
+  @include flex-column;
+  gap: $spacing-sm;
+  padding: 0 $spacing-xs;
+  overflow-y: auto;
+  max-height: calc(100vh - 280px);
+  min-height: 4px;
+  @include custom-scrollbar;
+  
+  &:empty {
+    min-height: 8px;
+  }
+}
+
+.footer {
+  padding: $spacing-sm;
+  padding-top: $spacing-xs;
+}
+
+.addCardButton {
+  @include button-ghost;
+  width: 100%;
+  padding: $spacing-sm;
+  justify-content: flex-start;
+  gap: $spacing-xs;
+  color: $color-text-secondary;
+  border-radius: $radius-md;
+  font-size: $font-size-sm;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    color: $color-text-primary;
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}

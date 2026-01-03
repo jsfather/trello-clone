@@ -1,0 +1,72 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-overlay;
+  z-index: $z-index-overlay;
+  @include flex-center;
+  padding: $spacing-base;
+  overflow-y: auto;
+}
+
+.modal {
+  background-color: $color-list-bg;
+  border-radius: $radius-lg;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: $shadow-lg;
+  @include custom-scrollbar;
+  
+  @include mobile {
+    max-width: 100%;
+    max-height: 95vh;
+    margin: $spacing-sm;
+  }
+}
+
+.header {
+  @include flex-between;
+  padding: $spacing-base;
+  padding-bottom: $spacing-sm;
+  position: sticky;
+  top: 0;
+  background-color: $color-list-bg;
+  z-index: 1;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+  word-break: break-word;
+  padding-right: $spacing-base;
+}
+
+.closeButton {
+  @include button-ghost;
+  padding: $spacing-sm;
+  color: $color-text-secondary;
+  flex-shrink: 0;
+  border-radius: $radius-full;
+  
+  &:hover {
+    color: $color-text-primary;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  svg {
+    display: block;
+  }
+}
+
+.content {
+  padding: 0 $spacing-base $spacing-base;
+}

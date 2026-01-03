@@ -1,0 +1,98 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.container {
+  @include flex-column;
+  gap: $spacing-lg;
+}
+
+.titleSection {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: $color-text-secondary;
+  margin-top: $spacing-xs;
+}
+
+.title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  flex: 1;
+  min-width: 0;
+}
+
+.section {
+  @include flex-column;
+  gap: $spacing-md;
+}
+
+.sectionHeader {
+  @include flex-start;
+  gap: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.addComment {
+  @include flex-column;
+  gap: $spacing-sm;
+}
+
+.commentInput {
+  @include textarea-base;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.addButton {
+  @include button-primary;
+  align-self: flex-start;
+}
+
+.commentsList {
+  @include flex-column;
+  gap: $spacing-md;
+  margin-top: $spacing-sm;
+}
+
+.noComments {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-style: italic;
+}
+
+.comment {
+  background-color: $color-card-bg;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+  box-shadow: $shadow-sm;
+}
+
+.commentHeader {
+  @include flex-between;
+  margin-bottom: $spacing-sm;
+}
+
+.commentDate {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.commentText {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  line-height: $line-height-normal;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

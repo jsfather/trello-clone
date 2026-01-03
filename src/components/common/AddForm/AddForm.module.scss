@@ -1,0 +1,46 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.container {
+  @include flex-column;
+  gap: $spacing-sm;
+}
+
+.input {
+  @include input-base;
+  background-color: $color-card-bg;
+  
+  &:focus {
+    border-color: $color-border-focus;
+  }
+}
+
+.textarea {
+  min-height: 54px;
+  resize: none;
+}
+
+.actions {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.addButton {
+  @include button-primary;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-sm;
+}
+
+.cancelButton {
+  @include button-ghost;
+  padding: $spacing-sm;
+  color: $color-text-secondary;
+  
+  &:hover {
+    color: $color-text-primary;
+  }
+  
+  svg {
+    display: block;
+  }
+}
