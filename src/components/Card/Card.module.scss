@@ -1,0 +1,54 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.card {
+  @include card-base;
+  padding: $spacing-sm $spacing-md;
+  cursor: pointer;
+  transition: background-color $transition-fast, box-shadow $transition-fast;
+  border-radius: $radius-lg;
+  
+  &:hover {
+    background-color: darken($color-card-bg, 2%);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid $color-border-focus;
+    outline-offset: 2px;
+  }
+  
+  &.dragging {
+    opacity: 0.5;
+    box-shadow: $shadow-lg;
+    z-index: $z-index-drag;
+  }
+}
+
+.content {
+  margin-bottom: $spacing-sm;
+}
+
+.title {
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  word-break: break-word;
+  line-height: $line-height-normal;
+}
+
+.footer {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.commentCount {
+  @include flex-start;
+  gap: $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  
+  svg {
+    width: 14px;
+    height: 14px;
+    opacity: 0.7;
+  }
+}

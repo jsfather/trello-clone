@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.board {
+  min-height: 100vh;
+  @include flex-column;
+  background-color: $color-background;
+}
+
+.header {
+  padding: $spacing-md $spacing-base;
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+  position: sticky;
+  top: 0;
+  z-index: $z-index-sticky;
+}
+
+.boardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-text-light;
+  display: inline-block;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.listsContainer {
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-base;
+  flex: 1;
+  align-items: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  @include custom-scrollbar;
+  
+  // Horizontal scroll on mobile
+  @include mobile {
+    padding: $spacing-sm;
+    gap: $spacing-sm;
+  }
+}
+
+.addListContainer {
+  flex-shrink: 0;
+  width: $list-width;
+  
+  @include mobile {
+    width: 280px;
+    min-width: 280px;
+  }
+}
+
+.addListButton {
+  @include button-ghost;
+  width: 100%;
+  padding: $spacing-md;
+  justify-content: flex-start;
+  gap: $spacing-sm;
+  background-color: rgba(255, 255, 255, 0.24);
+  color: $color-text-light;
+  border-radius: $radius-lg;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.32);
+  }
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.addListForm {
+  background-color: $color-list-bg;
+  border-radius: $radius-lg;
+  padding: $spacing-sm;
+}
+
+.dragOverlay {
+  opacity: 0.9;
+  transform: rotate(3deg);
+  cursor: grabbing;
+  
+  &.listOverlay {
+    transform: rotate(2deg);
+  }
+}
+
+.loadingPlaceholder {
+  color: $color-text-light;
+  font-size: $font-size-md;
+  padding: $spacing-base;
+  opacity: 0.8;
+}
