@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
@@ -9,7 +10,7 @@
   border-radius: $radius-lg;
   
   &:hover {
-    background-color: darken($color-card-bg, 2%);
+    background-color: color.adjust($color-card-bg, $lightness: -2%);
   }
   
   &:focus-visible {
